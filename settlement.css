@@ -1,0 +1,97 @@
+body {
+ color: #6b6b6b;
+}
+
+table {
+ border-collapse: collapse;
+ width: 1000px;
+}
+
+li {
+ list-style-type: none;
+ padding-left: 15px;
+}
+
+table, th, td {
+ border: 1px solid #6b6b6b;
+}
+
+th {
+ text-align: center;
+ background-color: #6b6b6b;
+ color: white;
+}
+
+td {
+ padding: 15px;
+ vertical-align: top;
+ text-align: left;
+ width: 50%;
+}
+
+input, select, button {
+ color: #6b6b6b;
+ border: 1px solid #6b6b6b;
+ width: 225px;
+}
+
+.postioncenter {
+ position: absolute;
+ left: 200px;
+}
+
+.labelcenter {
+ position: absolute;
+ left: 200px;
+}
+
+small {
+ position: absolute;
+ padding: 2px;
+ left: 430px;
+}
+
+label {
+ font-weight: bold;
+}
+
+input[type="checkbox"] {
+ position: static;
+ color: #6b6b6b;
+ width: 5px;
+}
+
+.sq_row {
+ width: 100%;
+ text-align: left;
+}
+
+.sq_block {
+ padding_left: 12px;
+ display: inline-block;
+ font-size: smaller;
+ text-align: left;
+ vertical-align: top;
+}
+
+.infotext {
+ font-size: smaller;
+}
+
+.namebar {
+ background-color: #6b6b6b;
+ color: #fff;
+ padding: 2px;
+ text-transform: uppercase;
+ margin: 1px;
+ padding-left: 5px;
+ width: 100%;
+ font-weight: bold;
+}
+
+.statblokdiv {
+ border-top: 1px solid #6b6b6b;
+ border-bottom: 1px solid #6b6b6b;
+ text-transform: uppercase;
+ font-weight: bold;
+} 

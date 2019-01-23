@@ -1,0 +1,121 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="settlement.js"></script>
+<link rel="stylesheet" type="text/css" href="settlement.css" />
+
+<table border="1" cellpadding="0" cellspacing="0">
+ <tr><th>Builder</th><th>Stat Block</th></tr>
+ <tr>
+  <td>
+	<form name="settlements">
+	 <label>Name: </label>
+	 <input type="text" name="Settlement Name" id="settl_name" value="Example Village" onchange="updateStatBlok();" class="postioncenter"> <br/>
+	 <label>Alignment: </label>
+	 <select name="Settlement Alignment" id="settl_align" onchange="updateStatBlok();" class="postioncenter">
+	  <option value="LG">Lawful Good</option><option value="NG">Neutral Good</option><option value="CG">Chaotic Good</option>
+		<option value="LN">Lawful Neutral</option><option value="TN">Neutral</option><option value="CN">Chaotic Neutral</option>
+		<option value="LE">Lawful Evil</option><option value="NE">Neutral Evil</option><option value="CE">Chaotic Evil</option>
+	 </select>
+	 <br/>
+	 <label>Type: </label>
+	 <select name="Settlement Type" id="settl_type" onchange="updateStatBlok();" class="postioncenter">
+	  <option value="T">Thorp</option><option value="H">Hamlet</option><option value="V">Village</option>
+		<option value="ST">Small Town</option><option value="LT">Large Town</option><option value="SC">Small City</option>
+		<option value="LC">Large City</option><option value="M">Metropolois</option>
+	 </select> 
+	 <br/>
+	 <br/>
+	 <label>Goverment: </label>
+	 <select name="Settlement Goverment" id="settl_gov" onchange="updateStatBlok();" class="postioncenter">
+	  <option value="Auto">Autocracy</option><option value="Coun">Council</option><option value="Magi">Magical</option>
+		<option value="Over">Overlord</option><option value="Secret">Secret Syndicate</option>
+	 </select> 
+	 <br/>
+	 <label>Total Population: </label>
+	 <input type="number" name="Settlement Population" id="settl_pop" value="1" onchange="updateStatBlok();" class="postioncenter"> <small id="popsugg"></small> <br/>
+	 <label>Population Breakdown: </label>
+	 <input type="text" name="Population Breakdown" id="settl_break" onchange="updateStatBlok();" class="postioncenter"> <br/>
+	 <br/>
+	 <div class="statblokdiv">Settlement Qualities</div>
+	 Number of Qualities: <span id='qualities'></span> <br/>
+	 <br/>
+	 <div class="sq_row">
+    <div class="sq_block">
+	   <input type="checkbox" name="SQ_box" value="Academic" id="sq_Academic" onchange="updateStatBlok(); checkboxlimit(qualities_num);" > <b>Academic</b> <br />
+	   <input type="checkbox" name="SQ_box" value="HolySite" id="sq_HolySite" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Holy Site</b> <br/>
+	   <input type="checkbox" name="SQ_box" value="Insular" id="sq_Insular" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Insular</b> <br/>
+		 <input type="checkbox" name="SQ_box" value="Magically" id="sq_Magically" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Magically Attuned</b> <br/>
+	  </div>
+	  <div class="sq_block">
+	   <input type="checkbox" name="SQ_box" value="Notorious" id="sq_Notorious" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Notorious</b> <br/>
+		 <input type="checkbox" name="SQ_box" value="Pious" id="sq_Pious" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Pious</b> <br/>
+	   <input type="checkbox" name="SQ_box" value="Prosperous" id="sq_Prosperous" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Prosperous</b>	<br/>
+		 <input type="checkbox" name="SQ_box" value="Intolerant" id="sq_Intolerant" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Racially Intolerant</b> <br/>
+	  </div>
+	  <div class="sq_block">
+		 <input type="checkbox" name="SQ_box" value="Rumormongering" id="sq_Rumormongering" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Rumormongering Citizens</b> <br/>
+		 <input type="checkbox" name="SQ_box" value="Strategic" id="sq_Strategic" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Strategic Location</b> <br/>
+		 <input type="checkbox" name="SQ_box" value="Superstitious" id="sq_Superstitious" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Superstitious</b> <br/>
+		 <input type="checkbox" name="SQ_box" value="Tourist" id="sq_Tourist" onchange="updateStatBlok(); checkboxlimit(qualities_num);"> <b>Tourist Attraction</b> <br/>
+	  </div>
+	 </div>
+	 <br/>
+	 <div class="statblokdiv">Settlement Disadvantages</div>
+	 <br/>
+	 <div class="sq_row">
+    <div class="sq_block">
+	   <input type="checkbox" name="SD_box" value="Anarchy" id="sd_Anarchy" class="boxi" onchange="updateStatBlok();"> <b>Anarchy</b> <br />
+	   <input type="checkbox" name="SD_box" value="Hunted" id="sd_Hunted" class="boxi" onchange="updateStatBlok();"> <b>Hunted</b> <br/>
+		 <input type="checkbox" name="SD_box" value="Impoverished" id="sd_Impoverished" class="boxi" onchange="updateStatBlok();"> <b>Impoverished</b> <br/>
+	  </div>
+		<div class="sq_block">
+		 <input type="checkbox" name="SD_box" value="Cursed" id="sd_Cursed" class="boxi" onchange="updateStatBlok();"> <b>Cursed</b> <select name="Curse Selector" id="curse_sel" onchange="updateStatBlok();" class="postioncenter">
+		  <option value="Corruption">Corruption</option><option value="Crime">Crime</option><option value="Economy">Economy</option>
+			<option value="Law">Law</option><option value="Lore">Lore</option><option value="Society">Society</option>
+	   </select> <br/>
+		 <input type="checkbox" name="SD_box" value="Plagued" id="sd_Plagued" class="boxi" onchange="updateStatBlok();"> <b>Plagued</b> <input type="text" name="plagued" id="plague_name" onchange="updateStatBlok();" class="postioncenter"> <br/>
+	  </div>
+	 </div>
+	 <br/>
+	 <div class="statblokdiv">Noteable NPCs</div>
+	 <div class="sq_block">
+	  <input type='hidden' id='npcrecords' name='npcrecords' value='0'>
+	  example: Landlord and Innkeeper Jaycen Halls (NG female human bard 4) <br/>
+		<br/>
+		<div class="input_fields_wrap">
+     <button class="add_field_button">Add NPC's</button> <br/>
+		 <br/>
+    </div>
+    <br/>
+	 </div> 
+	 <br/>
+	 <br/>
+	 <div class="statblokdiv">Description</div>
+	 <textarea rows="24" cols="65" maxlength="1500" name="Description" id="description" onchange="updateStatBlok();"> </textarea>
+	 <br/>
+	 <br/>	 
+	</form>
+  <br/>
+  <!--<input type="submit" onclick="showInput();" value="Build!"><br />-->
+  </td>
+  <td>
+	 <div>
+	  <p class="namebar"><span id='disp_name'></span>&nbsp;</p>
+	  <span id='disp_align'></span> <span id='disp_type'></span> <br/>
+	  <b>Corruption</b> <span id='corruption'></span>; <b>Crime</b> <span id='crime'></span>; <b>Economy</b> <span id='economy'></span>; <b>Law</b> <span id='law'></span>; <b>Lore</b> <span id='lore'></span>; <b>Society</b> <span id='society'></span><br/>
+	  <span id='qualities_text'></span>
+		<b>Danger</b> <span id='danger'></span><span id='disadvantages_text'></span> <br/>
+	  <p class="statblokdiv">DEMOGRAPHICS</p>
+	  <b>Government</b> <span id='rule'></span><br/>
+	  <b>Population</b>  <span id='population'></span> <span id='breakdown'></span><br/>
+	  <b>Noteable NPCs</b> <br/>
+		<span id='NPCsdesc'></span> <br/>
+	  <p class="statblokdiv">MARKETPLACE</p>
+	  <b>Base Value</b> <span id='base_val'></span>gp ; <b>Purchase Limi</b>t <span id='limit'></span>gp ; <b>Spellcasting</b> <span id='spellcasting'></span> <br/>
+	  <b>Minor Items</b> <span id='minor_items'></span>; <b>Medium Items</b> <span id='medium_items'></span>; <b>Major Items</b> <span id='major_items'></span> <br/>
+		<div class="infotext" id='minor_items_all'></div> <br/>
+		<p class="statblokdiv">Description</p>
+		<span id='settledesc'></span> <br/>
+	 </div>
+  </td>
+ </tr>
+</table>
